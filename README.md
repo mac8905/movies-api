@@ -1,2 +1,6 @@
 # movies-api
-Code challenge to perform operations on movies.
+HTTP server api for performing CRUD operations on movies.
+
+## Model
+
+![movies-class-diagram](class-diagram.svg)
