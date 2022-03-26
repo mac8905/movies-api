@@ -1,0 +1,84 @@
+scalar Timestamp
+
+type Query {
+  movie(id: ID!): Movie
+  movies(limit: Int): [Movie]
+}
+
+type Mutation {
+  register(input: RegisterUserInput): User!
+  login(input: LoginUserInput): User!
+  logout: Boolean!
+  createMovie(id: ID!, input: CreateMovieInput): Movie!
+  updateMovie(id: ID!, input: UpdateMovieInput): Movie!
+  deleteMovie(id: ID!): Boolean!
+}
+
+type User implements AuditTime {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  deletedAt: Boolean
+}
+
+type Movie implements AuditTime {
+  id: ID!
+  title: String!
+  genres: [Genre!]!
+  language: String!
+  year: Int!
+  visibility: Visibility!
+  addedBy: User!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  deletedAt: Boolean
+}
+
+interface AuditTime {
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  deletedAt: Boolean
+}
+
+enum Visibility {
+  PUBLIC
+  PRIVATE
+}
+
+enum Genre {
+  ACTION
+  COMEDY
+  DRAMA
+  FANTASY
+  HORROR
+}
+
+input RegisterUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input CreateMovieInput {
+  title: String!
+  genres: [Genre!]!
+  language: String!
+  year: Int!
+  visibility: Visibility!
+}
+
+input UpdateMovieInput {
+  title: String
+  genres: [Genre!]
+  language: String
+  year: Int
+  visibility: Visibility
+}
