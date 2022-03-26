@@ -21,7 +21,7 @@ type User implements AuditTime {
   password: String!
   createdAt: Timestamp!
   updatedAt: Timestamp!
-  deletedAt: Timestamp
+  deletedAt: Boolean
 }
 
 type Movie implements AuditTime {
@@ -34,13 +34,13 @@ type Movie implements AuditTime {
   addedBy: User!
   createdAt: Timestamp!
   updatedAt: Timestamp!
-  deletedAt: Timestamp
+  deletedAt: Boolean
 }
 
 interface AuditTime {
   createdAt: Timestamp!
   updatedAt: Timestamp!
-  deletedAt: Timestamp
+  deletedAt: Boolean
 }
 
 enum Visibility {
