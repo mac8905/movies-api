@@ -1,0 +1,27 @@
+{
+  "name": "movies-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mac8905/movies-api.git",
+  "author": "Miguel Caro <miguel.caro@sideinc.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "^16"
+  },
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "migrate": "prisma migrate dev"
+  },
+  "devDependencies": {
+    "@prisma/client": "3.11.1",
+    "@tsconfig/node16": "1.0.2",
+    "nodemon": "2.0.15",
+    "prisma": "3.11.1",
+    "ts-node": "10.7.0",
+    "typescript": "4.6.3"
+  },
+  "dependencies": {
+    "apollo-server": "3.6.6",
+    "graphql": "16.3.0"
+  }
+}
