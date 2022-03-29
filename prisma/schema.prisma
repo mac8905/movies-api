@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String   @id @unique @default(uuid()) @db.Uuid
   name      String
   email     String   @unique
   password  String
@@ -19,7 +19,7 @@ model User {
 }
 
 model Movie {
-  id         String     @id @default(uuid())
+  id         String     @id @unique @default(uuid()) @db.Uuid
   title      String
   genres     Genre[]
   language   String
@@ -29,7 +29,7 @@ model Movie {
   updatedAt  DateTime   @updatedAt
   deletedAt  Boolean?   @default(false)
   user       User?      @relation(fields: [addedBy], references: [id])
-  addedBy    String?
+  addedBy    String?    @db.Uuid
 }
 
 enum Genre {

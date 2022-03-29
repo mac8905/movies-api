@@ -9,7 +9,7 @@ type Mutation {
   register(input: RegisterUserInput): User!
   login(input: LoginUserInput): User!
   logout: Boolean!
-  createMovie(id: ID!, input: CreateMovieInput): Movie!
+  createMovie(input: CreateMovieInput): Movie!
   updateMovie(id: ID!, input: UpdateMovieInput): Movie!
   deleteMovie(id: ID!): Boolean!
 }
