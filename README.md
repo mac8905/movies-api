@@ -10,5 +10,6 @@ HTTP server api for performing CRUD operations on movies.
 
 1. Install dependencies `yarn`
 2. Run docker db container `docker-compose up -d`
-3. Run migration `yarn migrate`
-4. `yarn dev`
+3. Run migration `yarn migrate:dev`
+4. Seed db `yarn migrate:seed`
+5. Start server `yarn dev`

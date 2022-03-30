@@ -1,12 +1,17 @@
-import type { PrismaClient } from '@prisma/client';
+import { PrismaClient, Visibility } from '@prisma/client';
 
 export const Query = {
   movies: (
     _parent: unknown,
-    _args: unknown,
+    args: { skip?: number; take?: number },
     context: { orm: PrismaClient },
   ) => {
-    return context.orm.movie.findMany();
+    return context.orm.movie.findMany({
+      ...args,
+      where: {
+        visibility: Visibility.PUBLIC,
+      },
+    });
   },
 
   movie: (
@@ -15,7 +20,7 @@ export const Query = {
     context: { orm: PrismaClient },
   ) => {
     return context.orm.movie.findFirst({
-      where: { id: args.id },
+      where: { ...args, visibility: Visibility.PUBLIC },
     });
   },
 };

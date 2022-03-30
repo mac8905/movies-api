@@ -2,7 +2,7 @@ scalar Timestamp
 
 type Query {
   movie(id: ID!): Movie
-  movies(limit: Int): [Movie]
+  movies(skip: Int, take: Int): [Movie]
 }
 
 type Mutation {
