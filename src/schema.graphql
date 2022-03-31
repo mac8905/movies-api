@@ -7,7 +7,7 @@ type Query {
 
 type Mutation {
   register(input: RegisterUserInput): User!
-  login(input: LoginUserInput): User!
+  login(input: LoginUserInput): AuthPayload!
   logout: Boolean!
   createMovie(input: CreateMovieInput): Movie!
   updateMovie(id: ID!, input: UpdateMovieInput): Movie!
@@ -22,6 +22,11 @@ type User implements AuditTime {
   createdAt: Timestamp!
   updatedAt: Timestamp!
   deletedAt: Boolean
+}
+
+type AuthPayload {
+  userId: ID!
+  token: String!
 }
 
 type Movie implements AuditTime {
@@ -57,7 +62,7 @@ enum Genre {
 }
 
 input RegisterUserInput {
-  name: String!
+  name: String
   email: String!
   password: String!
 }
